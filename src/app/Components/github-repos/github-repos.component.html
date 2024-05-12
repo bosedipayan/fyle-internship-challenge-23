@@ -1,0 +1,31 @@
+<div *ngIf="githubRepos" class="card mt-3">
+  <div class="card">
+    <div class="card-body" style="border: none;">
+      <ul class="list-group">
+        <li *ngFor="let repo of githubRepos | paginate:{itemsPerPage: pageSize, currentPage: currentPage}"
+         class="list-group-item-wrapper">
+        <div class="list-group-item font-weight-bold  justify-content-between border border-secondary">
+            <a [href]="repo.html_url" class= "text-primary" target="_blank">
+              <p class="fs-3 fw-bold">{{repo.name}}</p></a>
+              <div class="card">
+                  <span class= "card-text text-wrap">{{repo.description}}</span>
+              </div><!-- <span class= "badge bg-warning">{{repo.languages_url}}</span> -->
+              <div class="mt-2">
+                <div class="languages">
+                  <div *ngIf="repo.languages">
+                    <span *ngFor="let lang of repo.languages" class="language"><span class="lang-text">{{ lang }}</span>{{ !$last ? '  ' : '' }}</span>
+                  </div>
+                </div>
+                <button class="btn btn-primary" *ngIf="!repo.languages" (click)="getLanguages(repo.languages_url, repo)">Show
+                  Languages</button>
+              </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+ </div>
+
+ <div class="pagination">
+  <pagination-controls (pageChange)="currentPage=$event" previousLabel="" nextLabel=""></pagination-controls>
+ </div>
+</div>

@@ -1,0 +1,23 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.list-group-item-wrapper {
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    padding: 10px;
+}
+
+.language {
+    margin-right: 5px;
+}
+
+.lang-text {
+    color: white;
+    background: rgb(6, 113, 220);
+    padding: 1px 5px 1px 5px;
+}
